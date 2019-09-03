@@ -9,14 +9,14 @@
 window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
 	title: {
-		text: "House Median Price"
+		text: "Stock Comparison Graph"
 	},
 	axisX: {
 		valueFormatString: "MMM YYYY"
 	},
 	axisY2: {
 		title: "Median List Price",
-		prefix: "$",
+		prefix: "\u20B9",
 		suffix: "K"
 	},
 	toolTip: {
@@ -32,10 +32,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{
 		type:"line",
 		axisYType: "secondary",
-		name: "San Fransisco",
+		name: "U.P. Stock Exchange",
 		showInLegend: true,
 		markerSize: 0,
-		yValueFormatString: "$#,###k",
+		yValueFormatString: "\u20B9 #,###k",
 		dataPoints: [		
 			{ x: new Date(2014, 00, 01), y: 850 },
 			{ x: new Date(2014, 01, 01), y: 50 },
@@ -45,10 +45,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	{
 		type: "line",
 		axisYType: "secondary",
-		name: "Manhattan",
+		name: "Vadodara Stock Exchange",
 		showInLegend: true,
 		markerSize: 0,
-		yValueFormatString: "$#,###k",
+		yValueFormatString: "\u20B9 #,###k",
 		dataPoints: [
 			{ x: new Date(2014, 00, 01), y: 200 },
 			{ x: new Date(2014, 01, 01), y: 1700 },
@@ -58,10 +58,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	{
 		type: "line",
 		axisYType: "secondary",
-		name: "Seatle",
+		name: "Koyambtour Stock Exchange",
 		showInLegend: true,
 		markerSize: 0,
-		yValueFormatString: "$#,###k",
+		yValueFormatString: "\u20B9 #,###k",
 		dataPoints: [
 			{ x: new Date(2014, 00, 01), y: 40 },
 			{ x: new Date(2014, 01, 01), y: 415 },
@@ -71,10 +71,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	{
 		type: "line",
 		axisYType: "secondary",
-		name: "Los Angeles",
+		name: "Meerut Stock Exchange",
 		showInLegend: true,
 		markerSize: 0,
-		yValueFormatString: "$#,###k",
+		yValueFormatString: "\u20B9 #,###k",
 		dataPoints: [
 			{ x: new Date(2014, 00, 01), y: 529 },
 			{ x: new Date(2017, 04, 01), y: 1749 },
