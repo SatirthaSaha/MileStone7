@@ -15,7 +15,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		valueFormatString: "MMM YYYY"
 	},
 	axisY2: {
-		title: "Median List Price",
+		title: "Stock Price",
 		prefix: "\u20B9",
 		suffix: "K"
 	},
