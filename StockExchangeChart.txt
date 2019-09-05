@@ -1,0 +1,92 @@
+Schema name: satirtha
+
+1. CREATE TABLE `company` (
+  `company_code` int(11) NOT NULL,
+  `company_Name` varchar(45) DEFAULT NULL,
+  `turnover` decimal(10,2) DEFAULT NULL,
+  `ceo` varchar(45) DEFAULT NULL,
+  `boardofdirectors` varchar(100) DEFAULT NULL,
+  `sector_id` int(11) DEFAULT NULL,
+  `breifwriteup` varchar(200) DEFAULT NULL,
+  `stock_Code` int(11) DEFAULT NULL,
+  PRIMARY KEY (`company_code`),
+  UNIQUE KEY `company_code_UNIQUE` (`company_code`),
+  KEY `sector_id` (`sector_id`),
+  CONSTRAINT `company_ibfk_1` FOREIGN KEY (`sector_id`) REFERENCES `sectors` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+2. CREATE TABLE `ipo_planned` (
+  `id` int(11) NOT NULL,
+  `Company_code` int(11) DEFAULT NULL,
+  `Stock_exchange` int(11) DEFAULT NULL,
+  `price_per_share` decimal(10,2) DEFAULT NULL,
+  `total_no_of_shares` int(11) DEFAULT NULL,
+  `open_date_time` date DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Company_code` (`Company_code`),
+  KEY `Stock_exchange` (`Stock_exchange`),
+  CONSTRAINT `ipo_planned_ibfk_1` FOREIGN KEY (`Company_code`) REFERENCES `company` (`company_code`),
+  CONSTRAINT `ipo_planned_ibfk_2` FOREIGN KEY (`Stock_exchange`) REFERENCES `stockexchange` (`stockexchange_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+3. CREATE TABLE `sectors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sector_name` varchar(45) DEFAULT NULL,
+  `brief` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=utf8;
+
+4. CREATE TABLE `stock` (
+  `stock_id` int(11) NOT NULL,
+  `current_price` double NOT NULL,
+  `date` datetime DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `company_code` int(11) DEFAULT NULL,
+  PRIMARY KEY (`stock_id`),
+  KEY `FKdm1irxvimc1qe9q09ygaby667` (`company_code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+5. CREATE TABLE `stock_exchange` (
+  `stockexchange_id` int(11) NOT NULL,
+  `stockExchange_name` varchar(45) DEFAULT NULL,
+  `brief` varchar(45) DEFAULT NULL,
+  `contactaddress` varchar(45) DEFAULT NULL,
+  `remarks` varchar(45) DEFAULT NULL,
+  `stock_exchange_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`stockexchange_id`),
+  UNIQUE KEY `stockexchange_id_UNIQUE` (`stockexchange_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+6. CREATE TABLE `stock_price` (
+  `company_code` int(11) NOT NULL,
+  `stock_exchange` int(11) DEFAULT NULL,
+  `current_price` decimal(12,2) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`company_code`),
+  UNIQUE KEY `company_code_UNIQUE` (`company_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+7. CREATE TABLE `stockexchange` (
+  `stockexchange_id` int(11) NOT NULL AUTO_INCREMENT,
+  `stockexchange_name` varchar(45) DEFAULT NULL,
+  `brief` varchar(45) DEFAULT NULL,
+  `contactaddress` varchar(45) DEFAULT NULL,
+  `remarks` varchar(45) DEFAULT NULL,
+  `stock_exchange_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`stockexchange_id`),
+  UNIQUE KEY `stockexchange_id_UNIQUE` (`stockexchange_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7161 DEFAULT CHARSET=utf8;
+
+8. CREATE TABLE `user` (
+  `id` decimal(19,0) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `usertype` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `mobilenumber` decimal(10,0) DEFAULT NULL,
+  `confirmed` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`,`username`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
